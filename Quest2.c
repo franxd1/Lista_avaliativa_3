@@ -15,7 +15,7 @@ int main(){
 
                 soma =(1+ taxadejuros);                
                 montante =valorinv * soma* (pow(soma,i)-1)/taxadejuros;
-                printf("%0.2lf \n",montante);
+                printf("Montante ao fim do mes %d: R$ %0.2lf\n",i,montante);
                 }  
   return 0 ;
 }
