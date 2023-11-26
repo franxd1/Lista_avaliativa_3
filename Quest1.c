@@ -2,21 +2,17 @@
 #include <string.h>
 #include <stdbool.h>
 
-// Função para verificar se a entrada é um número romano válido
 bool isNumeroRomanoValido(char* numeroRomano) {
     int comprimento = strlen(numeroRomano);
 
     for (int i = 0; i < comprimento; i++) {
         char c = numeroRomano[i];
         if (c != 'I' && c != 'V' && c != 'X' && c != 'L' && c != 'C' && c != 'D' && c != 'M') {
-            return false;  // Caractere inválido encontrado
+            return false;
         }
     }
-
     return true;
 }
-
-// Função para converter um caractere romano para seu valor decimal
 int valorRomano(char romano) {
     switch (romano) {
         case 'I': return 1;
@@ -29,8 +25,6 @@ int valorRomano(char romano) {
         default: return 0;
     }
 }
-
-// Função para converter um número romano para decimal
 int romanoParaDecimal(char* numeroRomano) {
     int resultado = 0;
     int comprimento = strlen(numeroRomano);
@@ -46,10 +40,8 @@ int romanoParaDecimal(char* numeroRomano) {
             resultado += valorAtual;
         }
     }
-
     return resultado;
 }
-
 long decimalParaBinario(int decimal) {
     long binario = 0, fator = 1;
 
@@ -58,7 +50,6 @@ long decimalParaBinario(int decimal) {
         decimal /= 2;
         fator *= 10;
     }
-
     return binario;
 }
 
@@ -68,11 +59,9 @@ int main() {
     scanf("%s", numeroRomano);
 
     int decimal = romanoParaDecimal(numeroRomano);
-
-    // Converte o número decimal para binário
+    
     long binario = decimalParaBinario(decimal);
-
-    // Imprime as representações em binário, decimal e hexadecimal
+    
     printf("%s na base 2: %ld\n", numeroRomano, binario);
     printf("%s na base 10: %d\n", numeroRomano, decimal);
     printf("%s na base 16: %x\n", numeroRomano, decimal);
