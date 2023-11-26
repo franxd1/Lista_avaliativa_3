@@ -112,7 +112,7 @@ int resultadoDia = DiaValido(DiaDaSem,ultmcaract);
     }
 int c;
 
-
+printf("%s",Placa);
     if (a==1 && b==1){
         if (resultadoDia==6 || resultadoDia==7){
            printf("Nao ha proibicao no fim de semana");
