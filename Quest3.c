@@ -1,27 +1,23 @@
 #include<stdio.h>
 #include<string.h>
+#include<ctype.h>
 //verifica placa
 int placaValida(char *Placa) {
-     char placa[8];
-
-    
-    
-    fgets(Placa, sizeof(Placa), stdin);
-
     Placa[strcspn(Placa, "\n")] = '\0';
 
-   
-    if (strlen(placa) == 7) {
+    if (strlen(Placa) == 8 ) {
         if (Placa[4] == 'X' || (Placa[3] == '-' && Placa[4] != 'X')) {
-            
             return 1;
         } else {
-         
             return 0;
         }
-    } else {
-      
-        return 0;
+    } else if((strlen(Placa)==7) && isdigit(Placa[3])){
+            for(int i = 0; i < 7; i++){
+                if(Placa[i] == '-'){
+                    return 0;
+                }
+            }
+        return 1;
     }
 }
 //verifica dia
@@ -86,10 +82,10 @@ int main() {
     int a, b;
     char ultmcaract;
 
-    scanf("%s", Placa);
+    scanf(" %s", Placa);
     //gets(Placa);
         Placa[8] = '\0';
-    scanf("%s", DiaDaSem);
+    scanf(" %s", DiaDaSem);
 
     size_t comprimento = strlen(Placa);
     if (comprimento > 0) {
@@ -104,6 +100,10 @@ int resultadoplaca = placaValida(Placa);
     }else if(resultadoplaca==1){
         a=1;
     }
+
+    
+
+
 int resultadoDia = DiaValido(DiaDaSem,ultmcaract);
     if(resultadoDia > 0){
         b=1;
@@ -111,55 +111,49 @@ int resultadoDia = DiaValido(DiaDaSem,ultmcaract);
         b=0;
     }
 int c;
-
-printf("%s",Placa);
     if (a==1 && b==1){
         if (resultadoDia==6 || resultadoDia==7){
-           printf("Nao ha proibicao no fim de semana");
+           printf("Nao ha proibicao no fim de semana\n");
          }else if(resultadoDia==1 || resultadoDia==11){
             if (resultadoDia == 1){
-                        printf("%s nao pode circular segunda-feira",Placa);
+                        printf("%s nao pode circular segunda-feira\n",Placa);
             }else if(resultadoDia == 11){
-                        printf("%s pode circular segunda-feira",Placa);
+                        printf("%s pode circular segunda-feira\n",Placa);
                 }               
          }else if(resultadoDia==2 || resultadoDia==12){
                 if (resultadoDia ==2){
-                        printf("%s nao pode circular terça-feira",Placa);
+                        printf("%s nao pode circular terca-feira\n",Placa);
                 }else if(resultadoDia ==12){
-                        printf("%s pode circular terça-feira terça-feira",Placa);
+                        printf("%s pode circular terca-feira\n",Placa);
                 }
          }else if(resultadoDia==3 || resultadoDia==13){
              if (resultadoDia ==3){
-                    printf("%s nao pode circular quarta-feira",Placa);
+                    printf("%s nao pode circular quarta-feira\n",Placa);
             }else if(resultadoDia ==13){
-                    printf("%s pode circular quarta-feira",Placa);
+                    printf("%s pode circular quarta-feira\n",Placa);
             }
          }
          else if(resultadoDia==4 || resultadoDia==14){
              if (resultadoDia == 4){
                     printf("%s nao pode circular quinta-feira\n",Placa);
             }else if(resultadoDia == 14){
-                    printf("%s pode circular quinta-feira",Placa);
+                    printf("%s pode circular quinta-feira\n",Placa);
             }
          }else if(resultadoDia==5 || resultadoDia==15){
              if (resultadoDia ==5){
-                    printf("%s nao pode circular sexta-feira",Placa);
+                    printf("%s nao pode circular sexta-feira\n",Placa);
             }else if(resultadoDia == 15){
-                    printf("%s pode circular",Placa);
+                    printf("%s pode circular sexta-feira\n",Placa);
             }
          }
-        
-    }else if(a==1 && b==0){
-         printf("Dia da semana invalido\n");
+         
     }else if(a==0 && b==1){
-        printf("Placa invalida\n");
+         printf("Placa invalida\n");
+    }else if(a==1 && b==0){
+        printf("Dia da semana invalido\n");
     }else if(a==0 && b==0){
         printf("Placa invalida\n");
         printf("Dia da semana invalido\n");
-
     }
-    printf("%s",Placa);
-
-
     return 0;
 }
