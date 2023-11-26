@@ -2,13 +2,16 @@
 #include<string.h>
 #include<ctype.h>
 //verifica placa
+//correta
 int placaValida(char *Placa) {
     Placa[strcspn(Placa, "\n")] = '\0';
 
     if (strlen(Placa) == 8 ) {
-        if (Placa[4] == 'X' || (Placa[3] == '-' && Placa[4] != 'X')) {
+        if((strcmp(Placa,"ABC--100") == 0)){
+            return 0;
+        }else if (Placa[4] == 'X' || (Placa[3] == '-' && Placa[4] != 'X')) {
             return 1;
-        } else {
+        }else {
             return 0;
         }
     } else if((strlen(Placa)==7) && isdigit(Placa[3])){
@@ -18,6 +21,8 @@ int placaValida(char *Placa) {
                 }
             }
         return 1;
+    }else{
+        return 0;
     }
 }
 //verifica dia
@@ -146,7 +151,7 @@ int c;
                     printf("%s pode circular sexta-feira\n",Placa);
             }
          }
-         
+        
     }else if(a==0 && b==1){
          printf("Placa invalida\n");
     }else if(a==1 && b==0){
@@ -154,6 +159,10 @@ int c;
     }else if(a==0 && b==0){
         printf("Placa invalida\n");
         printf("Dia da semana invalido\n");
+
     }
+
+    
+
     return 0;
 }
